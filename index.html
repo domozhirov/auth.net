@@ -130,16 +130,18 @@ function responseHandler(response) {
 
         paymentFormUpdate({errors});
     } else {
-        paymentFormUpdate(response.opaqueData);
+        paymentFormUpdate(response);
     }
 }
 
-function paymentFormUpdate(opaqueData) {
+function paymentFormUpdate(response) {
     var $paymentForm = $("#paymentForm");
 
-    if (opaqueData.errors) {
-        alert(opaqueData.errors.join("\n"));
+    if (response.errors) {
+        alert(response.errors.join("\n"));
     } else {
+        var opaqueData = response.opaqueData;
+
         document.getElementById("dataDescriptor").value = opaqueData.dataDescriptor;
         document.getElementById("dataValue").value = opaqueData.dataValue;
 
