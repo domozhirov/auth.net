@@ -150,9 +150,12 @@ function paymentFormUpdate(response) {
             method: 'POST',
             data: $paymentForm.serialize(),
             success: function(response) {
-                $paymentForm.hide();
 
-                alert('You have successfully subscribed');
+                if (response.result.status === 'success') {
+                    $paymentForm.hide();
+                }
+
+                alert(response.result.message);
             },
             error: function(data) {},
         });
