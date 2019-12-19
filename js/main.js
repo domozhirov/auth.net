@@ -1,5 +1,5 @@
 (function($) {
-  
+
 
   $(() => {
     const $popup = $('.purchase-popup-wrapper');
@@ -18,6 +18,8 @@
         .replace('%data-price%', data.price)
       );
 
+      $popup.find('[name="packagename"]').val(data.packagename);
+      $popup.find('[name="price"]').val(data.price);
       $popup.show();
     });
 
