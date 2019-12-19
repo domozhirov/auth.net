@@ -151,6 +151,8 @@ function paymentFormUpdate(response) {
             data: $paymentForm.serialize(),
             success: function(response) {
                 $paymentForm.hide();
+
+                alert('You have successfully subscribed');
             },
             error: function(data) {},
         });
