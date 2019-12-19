@@ -154,7 +154,7 @@ function paymentFormUpdate(response) {
     var $popupAlert = $('.popup-alert');
 
     if (response.errors) {
-        alert(response.errors.join("\n"));
+        popupAlert('Success', response.errors.join("<br>"));
     } else {
         var opaqueData = response.opaqueData;
 
@@ -166,23 +166,36 @@ function paymentFormUpdate(response) {
             method: 'POST',
             data: $paymentForm.serialize(),
             success: function(response) {
+                let title;
+
                 switch(response.result.status) {
                     case 'success':
+                        title = 'Success';
+
                         $paymentForm.hide();
-                        $popupAlert.find('.popup-alert-title').html('Success');
 
                         break;
                     case 'fail':
-                        $popupAlert.find('.popup-alert-title').html('Error');
+                        title = 'Error';
                         break;
                 }
 
-                $popupAlert.find('.popup-alert-body').html(response.result.message);
-                $popupAlert.show();
+                popupAlert(title, response.result.message);
+
             },
-            error: function(data) {},
+            error: function(response) {
+                popupAlert('Error', 'Something went wrong');
+            },
         });
     }
+}
+
+popupAlert(title, message) {
+    var $popupAlert = $('.popup-alert');
+
+    popupAlert.find('.popup-alert-title').html(title);
+    $popupAlert.find('.popup-alert-body').html(message);
+    $popupAlert.show();
 }
 </script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
