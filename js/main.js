@@ -1,4 +1,5 @@
 (function($) {
+  
 
   $(() => {
     const $popup = $('.purchase-popup-wrapper');
