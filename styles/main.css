@@ -1,16 +1,131 @@
 .purchase-popup-wrapper {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	padding: 40px;
-	display: none;
-	text-align: center;
-	background-color: rgba(0, 0, 0, .6)
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 40px;
+    display: none;
+    text-align: center;
+    background-color: rgba(0, 0, 0, .6)
 }
 
-.purchase-popup-wrapper .card {
-	display: inline-block;
-	text-align: left;
+.purchase-popup-wrapper .popup-card {
+    display: inline-block;
+    text-align: left;
 }
+
+.popup-card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+.popup-card-header:first-child {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+}
+
+.popup-card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.popup-card-message {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+}
+
+.popup-card-title {
+    margin-bottom: .75rem;
+}
+
+.popup-card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+
+.popup-alert {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 1.75rem;
+    display: none;
+    background-color: rgba(0, 0, 0, .15);
+}
+
+.popup-alert-content {
+    position: relative;
+    display: flex;
+    width: 500px;
+    margin: auto;
+    flex-direction: column;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: .3rem;
+    outline: 0;
+}
+
+.popup-alert-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #e9ecef;
+    border-top-left-radius: .3rem;
+    border-top-right-radius: .3rem;
+}
+
+.popup-alert-title {
+    margin: 0;
+}
+
+.popup-alert-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1rem;
+}
+
+.popup-alert-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem;
+    border-top: 1px solid #e9ecef;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

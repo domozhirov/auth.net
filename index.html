@@ -61,14 +61,14 @@
 </div>
 
 <div class="purchase-popup-wrapper">
-    <div class="card shadow">
-        <div class="card-header">
+    <div class="popup-card">
+        <div class="popup-card-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-            <h5 class="card-title" data-message="Purchase %data-packagename% package for %data-price%"></h5>
+            <h5 class="popup-card-title" data-message="Purchase %data-packagename% package for %data-price%"></h5>
         </div>
-        <form class="card-body" id="paymentForm">
+        <form class="popup-card-body" id="paymentForm">
             <input type="hidden" name="packagename" value="">
             <input type="hidden" name="price" value="">
             <input type="hidden" name="dataValue" id="dataValue">
@@ -113,6 +113,21 @@
     </div>
 </div>
 
+<div class="popup-alert">
+    <div class="popup-alert-content">
+        <div class="popup-alert-header">
+            <h5 class="popup-alert-title"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="popup-alert-body"></div>
+        <div class="popup-alert-footer">
+            <button class="btn btn-primary">Close</div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript">
 
 function responseHandler(response) {
@@ -136,6 +151,7 @@ function responseHandler(response) {
 
 function paymentFormUpdate(response) {
     var $paymentForm = $("#paymentForm");
+    var $popupAlert = $('.popup-alert');
 
     if (response.errors) {
         alert(response.errors.join("\n"));
@@ -150,12 +166,19 @@ function paymentFormUpdate(response) {
             method: 'POST',
             data: $paymentForm.serialize(),
             success: function(response) {
+                switch(response.result.status) {
+                    case 'success':
+                        $paymentForm.hide();
+                        $popupAlert.find('.popup-alert-title').html('Success');
 
-                if (response.result.status === 'success') {
-                    $paymentForm.hide();
+                        break;
+                    case 'fail':
+                        $popupAlert.find('.popup-alert-title').html('Error');
+                        break;
                 }
 
-                alert(response.result.message);
+                $popupAlert.find('.popup-alert-body').html(response.result.message);
+                $popupAlert.show();
             },
             error: function(data) {},
         });
