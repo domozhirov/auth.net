@@ -184,6 +184,7 @@ function paymentFormUpdate(response) {
 
             },
             error: function(response) {
+                console.log(response);
                 popupAlert('Error', 'Something went wrong');
             },
         });
