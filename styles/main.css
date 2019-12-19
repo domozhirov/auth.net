@@ -1,0 +1,16 @@
+.purchase-popup-wrapper {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	padding: 40px;
+	display: none;
+	text-align: center;
+	background-color: rgba(0, 0, 0, .6)
+}
+
+.purchase-popup-wrapper .card {
+	display: inline-block;
+	text-align: left;
+}
