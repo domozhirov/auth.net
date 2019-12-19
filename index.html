@@ -135,6 +135,8 @@ function responseHandler(response) {
 }
 
 function paymentFormUpdate(opaqueData) {
+    var $paymentForm = $("#paymentForm");
+
     if (opaqueData.errors) {
         alert(opaqueData.errors.join("\n"));
     } else {
@@ -144,8 +146,10 @@ function paymentFormUpdate(opaqueData) {
         $.ajax({
             url: '/YourServer/PathToExistingPaymentProcessingScript',
             method: 'POST',
-            data: $("#paymentForm").serialize(),
-            success: function(response) {},
+            data: $paymentForm.serialize(),
+            success: function(response) {
+                $paymentForm.hide();
+            },
             error: function(data) {},
         });
     }
