@@ -161,33 +161,36 @@ function paymentFormUpdate(response) {
         document.getElementById("dataDescriptor").value = opaqueData.dataDescriptor;
         document.getElementById("dataValue").value = opaqueData.dataValue;
 
-        $.ajax({
-            url: 'https://shop.homease.com/authorizenet.php',
-            method: 'POST',
-            data: $paymentForm.serialize(),
-            success: function(response) {
-                let title;
+        try {
+            $.ajax({
+                url: 'https://shop.homease.com/authorizenet.php',
+                method: 'POST',
+                data: $paymentForm.serialize(),
+                success: function(response) {
+                    let title;
 
-                switch(response.result.status) {
-                    case 'success':
-                        title = 'Success';
+                    switch(response.result.status) {
+                        case 'success':
+                            title = 'Success';
 
-                        $paymentForm.hide();
+                            $paymentForm.hide();
 
-                        break;
-                    case 'fail':
-                        title = 'Error';
-                        break;
-                }
+                            break;
+                        case 'fail':
+                            title = 'Error';
+                            break;
+                    }
 
-                popupAlert(title, response.result.message);
+                    popupAlert(title, response.result.message);
 
-            },
-            error: function(response) {
-                console.log(response);
-                popupAlert('Error', 'Something went wrong');
-            },
-        });
+                },
+                error: function(response) {
+                    popupAlert('Error', 'Something went wrong');
+                },
+            });
+        } catch(e) {
+            popupAlert('Error', 'Something went wrong');
+        }
     }
 }
 
