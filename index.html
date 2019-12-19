@@ -146,7 +146,7 @@ function paymentFormUpdate(response) {
         document.getElementById("dataValue").value = opaqueData.dataValue;
 
         $.ajax({
-            url: '/YourServer/PathToExistingPaymentProcessingScript',
+            url: 'https://shop.homease.com/authorizenet.php',
             method: 'POST',
             data: $paymentForm.serialize(),
             success: function(response) {
