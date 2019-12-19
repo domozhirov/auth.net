@@ -202,7 +202,7 @@ function paymentFormUpdate(response) {
 function popupAlert(title, message) {
     var $popupAlert = $('.popup-alert');
 
-    popupAlert.find('.popup-alert-title').html(title);
+    $popupAlert.find('.popup-alert-title').html(title);
     $popupAlert.find('.popup-alert-body').html(message);
     $popupAlert.show();
 }
